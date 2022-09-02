@@ -15,15 +15,12 @@ func main() {
 		fmt.Fprintf(os.Stderr, "\rScanlines remaining: %v", j)
 
 		for i := 0; i < image_width; i++ {
-			r := float64(i) / float64(image_width-1)
-			g := float64(j) / float64(image_height-1)
-			b := 0.25
-
-			ir := int(255.999 * r)
-			ig := int(255.999 * g)
-			ib := int(255.999 * b)
-
-			fmt.Printf("%v %v %v\n", ir, ig, ib)
+			pixel_color := RGB{
+				float64(i) / float64(image_height-1),
+				float64(j) / float64(image_width-1),
+				0.25,
+			}
+			WriteRGB(os.Stdout, pixel_color)
 		}
 	}
 }
